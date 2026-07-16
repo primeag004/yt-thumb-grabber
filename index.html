@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Grab high-quality YouTube thumbnails instantly. Fast, free, and private." />
+  <meta name="theme-color" content="#f7f7f5" />
+  <title>ThumbCatch — YouTube Thumbnail Grabber</title>
+  <link rel="preconnect" href="https://i.ytimg.com" />
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="ThumbCatch home">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7-4.5-7-4.5Z"/></svg></span>
+      <span>Thumb<span>Catch</span></span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#how-it-works">How it works</a>
+      <a href="#faq">FAQ</a>
+      <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to dark theme">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.3A8.4 8.4 0 0 1 8.7 3.5 8.5 8.5 0 1 0 20.5 15.3Z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="eyebrow"><span></span> Free · Fast · No sign-up</div>
+      <h1 id="hero-title">The thumbnail you need,<br><em>in one click.</em></h1>
+      <p class="hero-copy">Paste any YouTube link and download its thumbnail in the highest available quality. Simple as that.</p>
+
+      <form class="grabber" id="grabber-form" novalidate>
+        <label for="video-url" class="sr-only">YouTube video URL</label>
+        <div class="input-wrap">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 13.5a4 4 0 0 0 5.7.1l2.4-2.4a4 4 0 0 0-5.7-5.7l-1.4 1.4m2 3.6a4 4 0 0 0-5.7-.1l-2.4 2.4a4 4 0 0 0 5.7 5.7l1.4-1.4"/></svg>
+          <input id="video-url" name="url" type="text" inputmode="url" autocomplete="off" placeholder="Paste a YouTube link here…" aria-describedby="form-message" />
+          <button class="clear-button" id="clear-button" type="button" aria-label="Clear input">×</button>
+        </div>
+        <button class="primary-button" type="submit"><span>Get thumbnail</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+      </form>
+      <p class="form-message" id="form-message" role="status">Works with youtube.com, youtu.be, Shorts, and Live links.</p>
+
+      <div class="result" id="result" hidden aria-live="polite">
+        <div class="preview-shell">
+          <img id="thumbnail-preview" alt="YouTube video thumbnail preview" />
+          <span class="quality-badge" id="quality-badge">HD</span>
+        </div>
+        <div class="result-content">
+          <div>
+            <p class="result-kicker">Your thumbnail is ready</p>
+            <h2 id="result-title">YouTube thumbnail</h2>
+          </div>
+          <div class="quality-picker" role="group" aria-label="Thumbnail quality">
+            <button type="button" data-quality="maxresdefault" class="active">Max resolution</button>
+            <button type="button" data-quality="sddefault">Standard</button>
+            <button type="button" data-quality="hqdefault">High</button>
+          </div>
+          <div class="result-actions">
+            <button type="button" class="primary-button" id="download-button"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> Download image</button>
+            <button type="button" class="secondary-button" id="copy-button">Copy URL</button>
+          </div>
+          <p class="download-note">If your browser opens the image, right-click it and choose “Save image as”.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Benefits">
+      <div><span>01</span><strong>Full quality</strong><small>Up to 1280 × 720</small></div>
+      <div><span>02</span><strong>Privacy first</strong><small>Nothing is stored</small></div>
+      <div><span>03</span><strong>Always free</strong><small>No limits or sign-up</small></div>
+    </section>
+
+    <section class="steps section" id="how-it-works">
+      <div class="section-heading"><p>How it works</p><h2>From link to thumbnail<br>in seconds.</h2></div>
+      <div class="step-grid">
+        <article><span>1</span><div class="step-icon">↗</div><h3>Copy the link</h3><p>Open YouTube and copy the URL of any video, Short, or live stream.</p></article>
+        <article><span>2</span><div class="step-icon">⌘</div><h3>Paste it above</h3><p>Drop the link into the field. We'll find the video ID automatically.</p></article>
+        <article><span>3</span><div class="step-icon">↓</div><h3>Pick & download</h3><p>Choose your preferred resolution and save the image instantly.</p></article>
+      </div>
+    </section>
+
+    <section class="faq section" id="faq">
+      <div class="section-heading"><p>Good to know</p><h2>Frequently asked<br>questions.</h2></div>
+      <div class="accordion">
+        <details><summary>Is ThumbCatch really free?<span>+</span></summary><p>Yes. It is completely free to use, with no accounts, usage limits, or hidden fees.</p></details>
+        <details><summary>Which YouTube links are supported?<span>+</span></summary><p>Standard videos, youtu.be links, Shorts, Live, and embed URLs are all supported.</p></details>
+        <details><summary>Why isn't the max-resolution image available?<span>+</span></summary><p>Some older or low-resolution videos do not have a max-resolution thumbnail. ThumbCatch automatically falls back to the best available image.</p></details>
+        <details><summary>Is downloading thumbnails allowed?<span>+</span></summary><p>Thumbnails may be copyrighted. Use images you own or have permission to use, and follow YouTube's terms.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#"><span class="brand-mark"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7-4.5-7-4.5Z"/></svg></span><span>Thumb<span>Catch</span></span></a>
+    <p>Made for creators, with care.</p><p>© <span id="year"></span> ThumbCatch</p>
+  </footer>
+  <div class="toast" id="toast" role="status"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
