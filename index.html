@@ -1,102 +1,140 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Grab high-quality YouTube thumbnails instantly. Fast, free, and private." />
-  <meta name="theme-color" content="#f7f7f5" />
-  <title>ThumbCatch — YouTube Thumbnail Grabber</title>
-  <link rel="preconnect" href="https://i.ytimg.com" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Niji Local is a private, local-only chat interface for Ollama and OpenAI-compatible models." />
+  <meta name="theme-color" content="#101411" />
+  <title>Niji Local — private AI chat</title>
   <link rel="stylesheet" href="/src/styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="#" aria-label="ThumbCatch home">
-      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7-4.5-7-4.5Z"/></svg></span>
-      <span>Thumb<span>Catch</span></span>
-    </a>
-    <nav aria-label="Primary navigation">
-      <a href="#how-it-works">How it works</a>
-      <a href="#faq">FAQ</a>
-      <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to dark theme">
-        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.3A8.4 8.4 0 0 1 8.7 3.5 8.5 8.5 0 1 0 20.5 15.3Z"/></svg>
-        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-      </button>
-    </nav>
-  </header>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Chat history">
+      <div class="sidebar-top">
+        <a class="brand" href="#" aria-label="Niji Local home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>Niji <b>Local</b></span>
+        </a>
+        <button class="icon-button mobile-only" id="close-sidebar" type="button" aria-label="Close chat list" data-icon="close"></button>
+      </div>
 
-  <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="eyebrow"><span></span> Free · Fast · No sign-up</div>
-      <h1 id="hero-title">The thumbnail you need,<br><em>in one click.</em></h1>
-      <p class="hero-copy">Paste any YouTube link and download its thumbnail in the highest available quality. Simple as that.</p>
+      <button class="new-chat-button" id="new-chat" type="button" data-icon="plus"><span>New conversation</span><kbd>Ctrl K</kbd></button>
+      <div class="sidebar-label">Your device</div>
+      <nav class="chat-list" id="chat-list" aria-label="Saved conversations"></nav>
 
-      <form class="grabber" id="grabber-form" novalidate>
-        <label for="video-url" class="sr-only">YouTube video URL</label>
-        <div class="input-wrap">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 13.5a4 4 0 0 0 5.7.1l2.4-2.4a4 4 0 0 0-5.7-5.7l-1.4 1.4m2 3.6a4 4 0 0 0-5.7-.1l-2.4 2.4a4 4 0 0 0 5.7 5.7l1.4-1.4"/></svg>
-          <input id="video-url" name="url" type="text" inputmode="url" autocomplete="off" placeholder="Paste a YouTube link here…" aria-describedby="form-message" />
-          <button class="clear-button" id="clear-button" type="button" aria-label="Clear input">×</button>
-        </div>
-        <button class="primary-button" type="submit"><span>Get thumbnail</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
-      </form>
-      <p class="form-message" id="form-message" role="status">Works with youtube.com, youtu.be, Shorts, and Live links.</p>
-
-      <div class="result" id="result" hidden aria-live="polite">
-        <div class="preview-shell">
-          <img id="thumbnail-preview" alt="YouTube video thumbnail preview" />
-          <span class="quality-badge" id="quality-badge">HD</span>
-        </div>
-        <div class="result-content">
-          <div>
-            <p class="result-kicker">Your thumbnail is ready</p>
-            <h2 id="result-title">YouTube thumbnail</h2>
-          </div>
-          <div class="quality-picker" role="group" aria-label="Thumbnail quality">
-            <button type="button" data-quality="maxresdefault" class="active">Max resolution</button>
-            <button type="button" data-quality="sddefault">Standard</button>
-            <button type="button" data-quality="hqdefault">High</button>
-          </div>
-          <div class="result-actions">
-            <button type="button" class="primary-button" id="download-button"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> Download image</button>
-            <button type="button" class="secondary-button" id="copy-button">Copy URL</button>
-          </div>
-          <p class="download-note">If your browser opens the image, right-click it and choose “Save image as”.</p>
+      <div class="sidebar-bottom">
+        <div class="local-note"><span class="pulse-dot" aria-hidden="true"></span><span><strong>Local-only</strong><small>Chats stay in this browser</small></span></div>
+        <div class="sidebar-actions">
+          <button class="side-action" id="open-settings" type="button" data-icon="sliders">Settings</button>
+          <button class="side-action" id="theme-toggle" type="button" data-icon="sun">Theme</button>
         </div>
       </div>
-    </section>
+    </aside>
+    <div class="scrim" id="scrim" hidden></div>
 
-    <section class="trust-strip" aria-label="Benefits">
-      <div><span>01</span><strong>Full quality</strong><small>Up to 1280 × 720</small></div>
-      <div><span>02</span><strong>Privacy first</strong><small>Nothing is stored</small></div>
-      <div><span>03</span><strong>Always free</strong><small>No limits or sign-up</small></div>
-    </section>
+    <main class="chat-area">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="open-sidebar" type="button" aria-label="Open chat list" data-icon="menu"></button>
+        <div class="chat-heading">
+          <p class="eyebrow" id="chat-kicker">Private workspace</p>
+          <h1 id="chat-title">New conversation</h1>
+        </div>
+        <div class="topbar-actions">
+          <span class="connection-status" id="connection-status" title="Your model server is not connected"><i></i><span>Local model</span></span>
+          <button class="icon-button" id="more-button" type="button" aria-label="Conversation actions" data-icon="more"></button>
+          <div class="popover" id="conversation-menu" hidden>
+            <button id="rename-chat" type="button" data-icon="edit">Rename</button>
+            <button id="delete-chat" class="danger" type="button" data-icon="trash">Delete</button>
+          </div>
+        </div>
+      </header>
 
-    <section class="steps section" id="how-it-works">
-      <div class="section-heading"><p>How it works</p><h2>From link to thumbnail<br>in seconds.</h2></div>
-      <div class="step-grid">
-        <article><span>1</span><div class="step-icon">↗</div><h3>Copy the link</h3><p>Open YouTube and copy the URL of any video, Short, or live stream.</p></article>
-        <article><span>2</span><div class="step-icon">⌘</div><h3>Paste it above</h3><p>Drop the link into the field. We'll find the video ID automatically.</p></article>
-        <article><span>3</span><div class="step-icon">↓</div><h3>Pick & download</h3><p>Choose your preferred resolution and save the image instantly.</p></article>
+      <section class="conversation" id="conversation" aria-live="polite" aria-label="Conversation">
+        <div class="empty-state" id="empty-state">
+          <div class="orb" aria-hidden="true"><span></span><span></span><span></span></div>
+          <p class="eyebrow">Your space. Your context.</p>
+          <h2>Think freely,<br><em>run locally.</em></h2>
+          <p class="empty-copy">Connect a model on this device and start a private conversation. Niji Local never sends your chats to a cloud service.</p>
+          <div class="starter-grid" aria-label="Conversation starters">
+            <button type="button" data-prompt="Help me plan a calm, focused day with only three priorities."><span>Plan my day</span><small>Make a gentle 3-task plan</small></button>
+            <button type="button" data-prompt="Explain this idea simply, then give me a practical example: "><span>Learn something</span><small>Ask for a clear breakdown</small></button>
+            <button type="button" data-prompt="Brainstorm ten creative names for a sustainable community project."><span>Brainstorm</span><small>Explore ideas without limits</small></button>
+            <button type="button" data-prompt="Review the following text and make it clearer while keeping my voice: "><span>Improve writing</span><small>Paste text to refine it</small></button>
+          </div>
+        </div>
+        <div class="message-list" id="message-list"></div>
+      </section>
+
+      <footer class="composer-zone">
+        <div class="model-strip" id="model-strip">
+          <button class="model-select" id="quick-model" type="button" title="Open model settings"><span class="model-dot"></span><span id="model-name">Choose a local model</span><span class="chevron">⌄</span></button>
+          <span class="eco-chip" id="eco-chip" title="Eco mode uses fewer response tokens"><span>♲</span> Eco mode</span>
+        </div>
+        <form class="composer" id="composer" novalidate>
+          <label class="sr-only" for="message-input">Message</label>
+          <textarea id="message-input" rows="1" maxlength="16000" placeholder="Message your local model…" enterkeyhint="send"></textarea>
+          <div class="composer-actions">
+            <span class="composer-hint"><kbd>Enter</kbd> send <span>·</span> <kbd>Shift Enter</kbd> new line</span>
+            <button class="send-button" id="send-button" type="submit" aria-label="Send message" data-icon="arrow-up" disabled></button>
+            <button class="stop-button" id="stop-button" type="button" aria-label="Stop generating" data-icon="stop" hidden></button>
+          </div>
+        </form>
+        <p class="privacy-line">No account · no telemetry · model requests stay on your loopback address</p>
+      </footer>
+    </main>
+  </div>
+
+  <dialog class="settings-dialog" id="settings-dialog" aria-labelledby="settings-title">
+    <form method="dialog" class="dialog-card" id="settings-form">
+      <header class="dialog-header">
+        <div><p class="eyebrow">On-device configuration</p><h2 id="settings-title">Connect your model</h2></div>
+        <button class="icon-button" id="close-settings" type="submit" value="cancel" aria-label="Close settings" data-icon="close"></button>
+      </header>
+      <div class="dialog-body">
+        <div class="info-banner"><span aria-hidden="true">⌁</span><p>This UI only permits <strong>localhost / loopback</strong> model endpoints. It is designed to keep requests on your device.</p></div>
+        <fieldset>
+          <legend>Provider</legend>
+          <div class="provider-toggle">
+            <label><input type="radio" name="provider" value="ollama" checked /><span>Ollama <small>Native API</small></span></label>
+            <label><input type="radio" name="provider" value="openai" /><span>OpenAI-compatible <small>llama.cpp, LM Studio, etc.</small></span></label>
+          </div>
+        </fieldset>
+        <div class="field-grid">
+          <label class="field field-wide">Model server address
+            <input id="endpoint-input" name="endpoint" type="url" inputmode="url" spellcheck="false" required placeholder="http://127.0.0.1:11434" />
+            <small id="endpoint-help">Ollama default: http://127.0.0.1:11434</small>
+          </label>
+          <label class="field">Model
+            <div class="model-field"><input id="model-input" name="model" type="text" list="model-options" autocomplete="off" required placeholder="e.g. llama3.2:3b" /><button id="load-models" type="button">Find models</button></div>
+            <datalist id="model-options"></datalist>
+            <small id="model-help">Choose a model downloaded in your local server.</small>
+          </label>
+        </div>
+        <div class="test-row"><button class="quiet-button" id="test-connection" type="button" data-icon="plug">Test connection</button><span id="connection-feedback" role="status"></span></div>
+        <details class="advanced-settings">
+          <summary>Response controls <span>⌄</span></summary>
+          <div class="control-grid">
+            <label class="range-field">Creativity <output id="temperature-value">0.7</output><input id="temperature-input" type="range" min="0" max="1.5" step="0.1" value="0.7" /></label>
+            <label class="range-field">Response length <output id="tokens-value">384</output><input id="tokens-input" type="range" min="128" max="2048" step="64" value="384" /></label>
+          </div>
+          <label class="switch-row"><span><strong>Eco mode</strong><small>Caps replies at 384 tokens to use less power.</small></span><input id="eco-input" type="checkbox" checked /><i></i></label>
+          <label class="field system-field">System instructions
+            <textarea id="system-prompt-input" rows="4" maxlength="6000" placeholder="Optional instructions for every chat"></textarea>
+            <small>These instructions remain in your browser and are sent only to the model you choose.</small>
+          </label>
+        </details>
+        <section class="data-tools" aria-labelledby="data-tools-title">
+          <h3 id="data-tools-title">Your local data</h3>
+          <p>Export a portable backup or erase all conversations from this browser.</p>
+          <div><button type="button" class="quiet-button" id="export-data" data-icon="download">Export chats</button><label class="quiet-button import-button" data-icon="upload">Import backup<input id="import-data" type="file" accept="application/json" hidden /></label><button type="button" class="quiet-button danger-button" id="clear-data" data-icon="trash">Clear all</button></div>
+        </section>
       </div>
-    </section>
+      <footer class="dialog-footer"><button class="text-button" type="submit" value="cancel">Cancel</button><button class="save-button" id="save-settings" type="submit" value="save">Save &amp; use locally</button></footer>
+    </form>
+  </dialog>
 
-    <section class="faq section" id="faq">
-      <div class="section-heading"><p>Good to know</p><h2>Frequently asked<br>questions.</h2></div>
-      <div class="accordion">
-        <details><summary>Is ThumbCatch really free?<span>+</span></summary><p>Yes. It is completely free to use, with no accounts, usage limits, or hidden fees.</p></details>
-        <details><summary>Which YouTube links are supported?<span>+</span></summary><p>Standard videos, youtu.be links, Shorts, Live, and embed URLs are all supported.</p></details>
-        <details><summary>Why isn't the max-resolution image available?<span>+</span></summary><p>Some older or low-resolution videos do not have a max-resolution thumbnail. ThumbCatch automatically falls back to the best available image.</p></details>
-        <details><summary>Is downloading thumbnails allowed?<span>+</span></summary><p>Thumbnails may be copyrighted. Use images you own or have permission to use, and follow YouTube's terms.</p></details>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <a class="brand" href="#"><span class="brand-mark"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7-4.5-7-4.5Z"/></svg></span><span>Thumb<span>Catch</span></span></a>
-    <p>Made for creators, with care.</p><p>© <span id="year"></span> ThumbCatch</p>
-  </footer>
-  <div class="toast" id="toast" role="status"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>
