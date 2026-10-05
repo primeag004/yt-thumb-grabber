@@ -3,14 +3,18 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "A polished, privacy-friendly YouTube thumbnail downloader.",
+  "description": "A polished, privacy-friendly YouTube thumbnail downloader and 1,500+ tools suite with installable Android APK.",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && python3 scripts/build_apk.py",
+    "build:apk": "python3 scripts/build_apk.py",
     "preview": "vite preview",
     "test": "node --test"
   },
   "devDependencies": {
     "vite": "^7.0.4"
+  },
+  "dependencies": {
+    "apk_sign_ts": "^1.0.1"
   }
 }
