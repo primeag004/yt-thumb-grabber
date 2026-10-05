@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download OmniTools Pro APK</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #090d16;
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .card {
+      background: #131b2e;
+      border: 1px solid #1e293b;
+      border-radius: 24px;
+      padding: 2.5rem 1.75rem;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+    .icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+    }
+    .icon svg {
+      width: 44px;
+      height: 44px;
+      fill: #fff;
+    }
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      font-weight: 800;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.2);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1.75rem;
+    }
+    .btn-download {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+      transition: all 0.2s;
+      width: 100%;
+    }
+    .btn-download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(16, 185, 129, 0.6);
+    }
+    .steps {
+      margin-top: 2rem;
+      text-align: left;
+      background: #090d16;
+      border: 1px solid #1e293b;
+      border-radius: 14px;
+      padding: 1.25rem;
+      font-size: 0.85rem;
+    }
+    .steps h3 {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      margin-bottom: 0.75rem;
+    }
+    .step-item {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+      color: #94a3b8;
+    }
+    .step-num {
+      background: #1e293b;
+      color: #818cf8;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <h1>OmniTools Pro</h1>
+    <div class="badge">Official Android .APK</div>
+    <p>1,500+ Powerful Tools Suite — YouTube Grabber, Instagram Downloader, and utilities with full offline support.</p>
+    
+    <a href="./omnitools-pro.apk" download="omnitools-pro.apk" class="btn-download" id="dl-link">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+      <span>Download .APK Now</span>
+    </a>
+
+    <div class="steps">
+      <h3>📱 How to Install on Android:</h3>
+      <div class="step-item">
+        <span class="step-num">1</span>
+        <span>Tap <strong>Download .APK Now</strong> button above.</span>
+      </div>
+      <div class="step-item">
+        <span class="step-num">2</span>
+        <span>Open notification / downloaded file.</span>
+      </div>
+      <div class="step-item">
+        <span class="step-num">3</span>
+        <span>Enable <em>"Install Unknown Apps"</em> if prompted, then tap <strong>Install</strong>.</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Auto-trigger download after 1 second if opened directly
+    setTimeout(() => {
+      const link = document.getElementById('dl-link');
+      if (link) link.click();
+    }, 1200);
+  </script>
+</body>
+</html>
